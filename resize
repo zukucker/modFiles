@@ -1,0 +1,6 @@
+#!/bin/bash
+mkdir -p resized
+for filename in *.jpeg; do
+	convert $filename -resize 200x200 "./resized/$filename"	
+done
+echo "Files wurde verkleinert"
