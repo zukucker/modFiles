@@ -1,6 +1,6 @@
 #!/bin/bash
 echo "Was möchten Sie tun?"
-echo "1.)Resize Image"
+echo "1.)Resize Imageresolution"
 echo "2.)Change FileSize"
 read eingabe
 
@@ -20,7 +20,7 @@ then
 		echo "Welche Qualität sollen die Bilder haben?"
 		read quali
 		for filename in *png; do
-			convert $filename -quality $quali "./JPEG/$filename.jpeg"
+			convert $filename -quality $quali "./JPEG/${filename::-4}.jpeg"
 		done
 		echo "Files wurde verkleinert"
 fi
