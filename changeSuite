@@ -1,0 +1,26 @@
+#!/bin/bash
+echo "Was möchten Sie tun?"
+echo "1.)Resize Image"
+echo "2.)Change FileSize"
+read eingabe
+
+if [ $eingabe == 1 ]
+then
+		mkdir -p resized
+		echo "Welche Bildgröße möchten Sie haben?"
+		read imagesize
+
+		for filename in *.jpeg; do
+			convert $filename -resize $imagesize "./resized/$filename"	
+		done
+		echo "Files wurde verkleinert"
+elif [ $eingabe == 2 ]
+then
+		mkdir -p JPEG
+		echo "Welche Qualität sollen die Bilder haben?"
+		read quali
+		for filename in *png; do
+			convert $filename -quality $quali "./JPEG/$filename.jpeg"
+		done
+		echo "Files wurde verkleinert"
+fi

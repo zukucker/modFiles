@@ -1,6 +1,8 @@
 #!/bin/bash
 mkdir -p JPEG
+echo "Welche Qualität sollen die Bilder haben?"
+read quali
 for filename in *png; do
-	convert $filename -quality 50 "./JPEG/$filename.jpeg"
+	convert $filename -quality $quali "./JPEG/$filename.jpeg"
 done
 echo "Files wurde verkleinert"
