@@ -2,6 +2,7 @@
 echo "Was möchten Sie tun?"
 echo "1.)Resize Imageresolution"
 echo "2.)Change FileSize"
+echo "3.)Einzel Anpassung"
 read eingabe
 
 if [ $eingabe == 1 ]
@@ -23,4 +24,31 @@ then
 			convert $filename -quality $quali "./JPEG/${filename::-4}.jpeg"
 		done
 		echo "Files wurde verkleinert"
+
+elif [ $eingabe == 3 ]
+then
+		echo "Größe ändern?(y/N)"
+		read input
+		if [ $input == "y" ]
+		then
+				mkdir -p resized
+				echo "Bild Größe eingeben:"
+				read imagesize
+				for filename in *.*; do
+						convert $filename -resize $imagesize "./resized/$filename"
+				done
+				echo "File(s) wurden verkleinert"
+		fi
+		echo "Qualität anpassen?(y/N)"
+		read input
+		if [ $input == "y" ]
+		then
+				mkdir -p changedQuality
+				echo "Welche Qualität sollen die Bilder haben?"
+				read quality
+				for filename in *.*; do
+						convert $filename -quality $quality "./changedQuality/$filename"
+				done
+				echo "Files wurden verkleinert"
+		fi
 fi
